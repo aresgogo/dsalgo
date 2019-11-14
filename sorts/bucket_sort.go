@@ -15,6 +15,14 @@ func getMax(a []int) int {
 	return max
 }
 
+// BucketSort 桶排序算法
+// arr = [1, 6, 3, 5, 8, 6, 4] max:8 bucketsLength:7 index:0(取值范围[0, 6])
+// index: arr[i] * (7-1) / 8
+// buckets = {{1}, {}, {3}, {5, 4}, {6, 6}, {}, {8}}
+// for i in buckets:
+// 		桶内快排
+// 		根据偏移量写回arr
+//		更新arr偏移量
 func BucketSort(a []int) {
 	num := len(a)
 	if num <= 1 {
@@ -33,9 +41,9 @@ func BucketSort(a []int) {
 	for i := 0; i < num; i++ {
 		bucketLen := len(buckets[i])
 		if bucketLen > 0 {
-			QuickSort(buckets[i]) // 桶内做快速排序
-			copy(a[tmpPos:], buckets[i])
-			tmpPos += bucketLen
+			QuickSort(buckets[i])        // 桶内做快速排序
+			copy(a[tmpPos:], buckets[i]) // 写回
+			tmpPos += bucketLen          // 更新偏移量
 		}
 	}
 

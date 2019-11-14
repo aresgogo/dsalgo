@@ -7,7 +7,7 @@ func TestCountingSort(t *testing.T) {
 	CountingSort(arr, len(arr))
 	t.Log(arr)
 
-	arr = []int{5, 4, 3, 2, 1}
+	arr = []int{2, 5, 3, 0, 2, 3, 0, 3}
 	CountingSort(arr, len(arr))
 	t.Log(arr)
 }
